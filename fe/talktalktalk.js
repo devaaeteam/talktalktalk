@@ -9,7 +9,7 @@ angular.module('talktalktalk', ['ngRoute', 'ngStorage'])
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
-            .when('/signin', {
+            .when('/signup', {
                 templateUrl: 'views/signin.html',
                 controller: 'SigninCtrl'
             })

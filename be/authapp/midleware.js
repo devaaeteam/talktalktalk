@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken'),
-    moment = require('moment');
+    moment = require('moment'),
+    settings = require('../../settings');
 
  exports.ensureAuthenticated = function (request, response, next) {
     var token = request.body.token || request.params.token || request.headers['x-access-token'];
@@ -9,7 +10,7 @@ var jwt = require('jsonwebtoken'),
             .status(403)
             .send('Not token provided');
     }
-	jwt.verify(token, 'PRUEBA', function(err, decoded) {			
+	jwt.verify(token, settings.CODE, function(err, decoded) {			
 		if (err) {
 			console.log('401 UNAUTHORIZED: Failed to authenticate token.');
 			return response

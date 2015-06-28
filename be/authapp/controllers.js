@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
 	User = require('./models'),
-	jwt = require('jsonwebtoken');
+	jwt = require('jsonwebtoken'),
+	settings = require('../../settings');
 
 
 exports.login = function (request, response) {
@@ -15,7 +16,7 @@ exports.login = function (request, response) {
 				console.log('500 INTERNAL SERVER ERROR: ' + error.message)
 				response.status(500).send(error.message);
 			} else if (user){
-				var token = jwt.sign(user, 'PRUEBA', {
+				var token = jwt.sign(user, settings.CODE, {
 					expiresInMinutes: 1440 // expires in 24 hours
 				});
 

@@ -26,9 +26,16 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/login">Login</a></li>
-              <li><a href="#/" ng-click="logout()">Logout</a></li>
-              <li><a href="#/signin">Signup</a></li>
+                <li><a href="#/login" ng-show="!isAuthenticated()">Login</a></li>
+                <li><a href="#/signin" ng-show="!isAuthenticated()">Signup</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" ng-show="isAuthenticated()">Me<b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="#/dashboard">My Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" ng-click="logout()">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>

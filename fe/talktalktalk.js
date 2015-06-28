@@ -14,7 +14,7 @@ angular.module('talktalktalk', ['ngRoute', 'ngStorage'])
                 controller: 'SigninCtrl'
             })
             .when('/dashboard', {
-                templateUrl: 'views/dashboard.html',
+                templateUrl: 'views/profile.html',
                 controller: 'MyDashBoardCtrl'
             })
     	$httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {

@@ -3,7 +3,13 @@ var HomeController = function ($scope, $location, $localStorage, AuthService){
   	$scope.logout = function () {
   		delete $localStorage.token;
         delete $localStorage.profile;
+        delete $scope.welcome;
+        delete $scope.profile;
 	};
+    $scope.isAuthenticated = function () {
+        if ($localStorage.profile) return true;
+        else return false;
+    };
     if ($localStorage.profile){
         $scope.welcome = "Bienvenido " + $localStorage.profile.name;
     } else {
@@ -59,10 +65,11 @@ var SigninController = function ($scope, $location, AuthService){
 
 var MyDashboardController = function ($scope, $localStorage){
     if ($localStorage.profile){
-        $scope.username = $localStorage.profile.username;
-        $scope.name = $localStorage.profile.name;
-        $scope.surname = $localStorage.profile.surname;
-        $scope.email = $localStorage.profile.email
+        $scope.profile = $localStorage.profile
+        $scope.username = $scope.profile.username;
+        $scope.name = $scope.profile.name;
+        $scope.surname = $scope.profile.surname;
+        $scope.email = $scope.profile.email
     } else {
         $location.path('/')
     }
